@@ -239,13 +239,25 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("**审减金额范围**")
-    reduction_min = st.number_input("最小 ≥", min_value=0.0, value=0.0, step=100.0, key="red_min")
-    reduction_max = st.number_input("最大 ≤", min_value=0.0, value=10000.0, step=1000.0, key="red_max")
+    reduction_frame = ttk.LabelFrame(main_frame, text="审减金额范围")
+    reduction_frame.pack(pady=5, fill="x")
+    ttk.Label(reduction_frame, text="最小 ≥").grid(row=0, column=0, padx=5)
+    self.reduction_min = ttk.Entry(reduction_frame, width=10)
+    self.reduction_min.grid(row=0, column=1, padx=5)
+    ttk.Label(reduction_frame, text="最大 ≤").grid(row=0, column=2, padx=5)
+    self.reduction_max = ttk.Entry(reduction_frame, width=10)
+    self.reduction_max.grid(row=0, column=3, padx=5)
 
 with col2:
     st.markdown("**审增金额范围**")
-    increase_min = st.number_input("最小 ≥", min_value=0.0, value=0.0, step=100.0, key="inc_min")
-    increase_max = st.number_input("最大 ≤", min_value=0.0, value=10000.0, step=1000.0, key="inc_max")
+    increase_frame = ttk.LabelFrame(main_frame, text="审增金额范围")
+    increase_frame.pack(pady=5, fill="x")
+    ttk.Label(increase_frame, text="最小 ≥").grid(row=0, column=0, padx=5)
+    self.increase_min = ttk.Entry(increase_frame, width=10)
+    self.increase_min.grid(row=0, column=1, padx=5)
+    ttk.Label(increase_frame, text="最大 ≤").grid(row=0, column=2, padx=5)
+    self.increase_max = ttk.Entry(increase_frame, width=10)
+    self.increase_max.grid(row=0, column=3, padx=5)
 
 st.markdown("---")
 
@@ -325,4 +337,5 @@ if admin_password == "admin123":  # 你可以改密码
         st.sidebar.text("暂无上传记录")
 
 st.markdown("---")
+
 st.caption("💡 提示：请确保Excel文件包含名为【分部1】分部分项清单对比表的工作表")
